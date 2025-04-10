@@ -1,30 +1,52 @@
 #include "MainWindow.h"
+#include <QVBoxLayout>
 #include <QKeyEvent>
-#include <QDebug>
+#include <QPushButton>
 
-MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
-    // Constructor implementation
-    setWindowTitle("Xross");
-    resize(400, 300);
+MainWindow::MainWindow(QWidget *parent) :
+    QWidget(parent),
+    output(new QTextEdit(this)),
+    input(new QLineEdit(this)),
+    layout(new QVBoxLayout(this))
+{
+    // Set the window properties
+    setWindowTitle("Xross Terminal");
+    setFixedSize(600, 400);
+
+    // Make the output read-only (simulate terminal output)
+    output->setReadOnly(true);
+    output->setStyleSheet("background-color: black; color: white;");
+
+    // Set up the input area
+    input->setStyleSheet("background-color: black; color: white;");
+    input->setPlaceholderText("Enter your command...");
+    
+    // Set the layout
+    layout->addWidget(output);
+    layout->addWidget(input);
+
+    // Display the initial prompt in the output
+    output->append("oli@oli:~$");
+
+    // Connect the Enter key press to the slot
+    connect(input, &QLineEdit::returnPressed, this, &MainWindow::onEnterPressed);
 }
 
-MainWindow::~MainWindow() {
-    // Destructor implementation
+MainWindow::~MainWindow()
+{
 }
 
-void MainWindow::onEnterPressed() {
-    // Handle the enter key press here
-    qDebug() << "Enter key pressed";
-}
+void MainWindow::onEnterPressed()
+{
+    // Get the command from input field
+    QString command = input->text();
 
-bool MainWindow::eventFilter(QObject *object, QEvent *event) {
-    // Custom event filtering for key press
-    if (event->type() == QEvent::KeyPress) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-        if (keyEvent->key() == Qt::Key_Return) {
-            onEnterPressed();
-            return true;
-        }
-    }
-    return QWidget::eventFilter(object, event);
+    // Add the entered command to the output
+    output->append("oli@oli:~$ " + command);
+
+    // Simulate the command execution (for now, just show it)
+    output->append("Executed: " + command);
+
+    // Clear the input field for the next command
+    input->clear();
 }
