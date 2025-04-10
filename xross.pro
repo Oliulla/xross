@@ -1,3 +1,4 @@
+
 TEMPLATE = app
 TARGET = xross
 
@@ -9,16 +10,13 @@ RCC_DIR = build/rcc
 UI_DIR = build/ui
 
 # Include the source directories
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+           src/MainWindow.cpp  # Add MainWindow.cpp here
+
+HEADERS += src/MainWindow.h  # Add your header file here
 
 # Specify Qt modules
 QT += core gui widgets
 
 # Clean the build directory before building
 CLEAN_DIRS += build
-
-# Add header files (if any)
-HEADERS += src/mainwindow.h
-
-# Add other resources (if any)
-# RESOURCES += src/resources.qrc

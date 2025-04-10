@@ -50,3 +50,19 @@ To use the GUI version, simply run:
 ```bash
 ./build/xross
 ```
+
+```
+xross-cli/
+│
+├── src/
+│   ├── main.cpp          // Your main application entry point
+│   ├── MainWindow.h      // Header file for MainWindow
+│   └── MainWindow.cpp    // Source file for MainWindow
+│
+├── build/                // Build directory
+│   └── (compiled files)
+│
+├── xross.pro             // Qt project file
+├── README.md             // Documentation file
+└── .gitignore            // Git ignore file
+```
