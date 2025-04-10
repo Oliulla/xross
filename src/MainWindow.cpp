@@ -145,7 +145,7 @@ void MainWindow::updatePrompt()
 void MainWindow::executeCommand(const QString &command)
 {
     // Process the command (simulated)
-    QString result = QString("Command '%1' executed").arg(command);
+    QString result = QString("\nCommand '%1' executed").arg(command);
     
     // Display the result
     output->appendOutput(result + "\n");

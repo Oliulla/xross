@@ -1,6 +1,10 @@
 {
   "files.associations": {
-    "string": "cpp"
+    "string": "cpp",
+    "qplaintextedit": "cpp",
+    "qstring": "cpp",
+    "qtimer": "cpp",
+    "qvboxlayout": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
