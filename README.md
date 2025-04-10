@@ -1,5 +1,3 @@
----
-
 # Xross CLI Documentation
 
 ## Installation
@@ -52,7 +50,3 @@ To use the GUI version, simply run:
 ```bash
 ./build/xross
 ```
-
-The application window will appear, allowing you to enter commands and view the results.
-
----
