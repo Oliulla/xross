@@ -2,44 +2,54 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
-#include <QTextEdit>
+#include <QPlainTextEdit>
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QString>
+#include <QTimer>
+
+class TerminalDisplay : public QPlainTextEdit {
+    Q_OBJECT
+public:
+    explicit TerminalDisplay(QWidget *parent = nullptr);
+    void appendOutput(const QString &text);
+    void setPrompt(const QString &prompt);
+    void updateCursor();
+
+signals:
+    void executeCommand(const QString &command);
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+
+private:
+    QString m_prompt;
+    QString m_currentInput;
+    int m_cursorPos;
+    bool m_cursorVisible;
+    QTimer m_cursorTimer;
+};
 
 class MainWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    // Constructor that takes an optional parent widget
     explicit MainWindow(QWidget *parent = nullptr);
-    
-    // Destructor
     ~MainWindow();
 
 private slots:
-    // Slot that is called when the Enter key is pressed in the input field
-    void onEnterPressed();  // Only one declaration is needed
+    void executeCommand(const QString &command);
 
 private:
-    // Terminal-like output display for showing commands and results
-    QTextEdit *output;
-    
-    // Input field where the user types commands (single-line input)
-    QLineEdit *input;
-    
-    // Layout to arrange widgets vertically
-    QVBoxLayout *layout;
-    
-    // Method to get the current username for the prompt display
     QString getCurrentUser();
-    
-    // Event filter to intercept and handle key events
-    bool eventFilter(QObject* obj, QEvent* event);
+    void updatePrompt();
 
-    // Stores the current user for the prompt display (e.g., "oli")
+    TerminalDisplay *output;
+    QVBoxLayout *layout;
     QString currentUser;
+    QString currentPrompt;
 };
 
 #endif // MAINWINDOW_H
