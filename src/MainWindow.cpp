@@ -92,26 +92,19 @@ void TerminalDisplay::paintEvent(QPaintEvent *event)
 {
     QPlainTextEdit::paintEvent(event);
     
-    // Draw the cursor if it's visible and we're at the input line
     if (m_cursorVisible && hasFocus()) {
         QTextCursor cursor = textCursor();
-        cursor.movePosition(QTextCursor::End);
-        
-        // Calculate cursor position
-        QString fullLine = m_prompt + m_currentInput;
+        cursor.movePosition(QTextCursor::End);  // Position cursor at end of text
+
+        QRect curRect = cursorRect(cursor);     // Get actual cursor rectangle
         QFontMetrics fm(font());
-        int cursorX = fm.horizontalAdvance(fullLine.left(m_cursorPos + m_prompt.length()));
-        
-        // Get the line rectangle
-        QRect curRect = cursorRect(cursor);
-        curRect.setLeft(curRect.left() + cursorX - fm.horizontalAdvance(fullLine.left(m_cursorPos)));
-        curRect.setWidth(fm.horizontalAdvance(' '));
-        
-        // Draw the cursor
+        curRect.setWidth(fm.horizontalAdvance(' '));  // Set width to one space
+
         QPainter painter(viewport());
-        painter.fillRect(curRect, Qt::white);
+        painter.fillRect(curRect, Qt::white);   // Draw custom cursor
     }
 }
+
 
 void TerminalDisplay::keyPressEvent(QKeyEvent *event)
 {
@@ -146,14 +139,14 @@ void TerminalDisplay::keyPressEvent(QKeyEvent *event)
         m_cursorPos += event->text().length();
     }
     
-    // Update display
+    // Update display with precise cursor positioning
     QTextCursor cursor = textCursor();
     cursor.movePosition(QTextCursor::StartOfLine);
     cursor.movePosition(QTextCursor::EndOfLine, QTextCursor::KeepAnchor);
     cursor.removeSelectedText();
     cursor.insertText(m_prompt + m_currentInput);
     
-    // Position cursor correctly
+    // Position cursor exactly after prompt + input
     cursor.movePosition(QTextCursor::StartOfLine);
     cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, 
                        m_prompt.length() + m_cursorPos);
@@ -203,18 +196,17 @@ QString MainWindow::getCurrentUser()
 
 void MainWindow::updatePrompt()
 {
-    // Get current working directory for prompt
-    QString currentDir = QDir::currentPath();
-    currentDir.replace(QDir::homePath(), "~");
+    QString currentDir = QDir::currentPath().replace(QDir::homePath(), "~");
     
-    currentPrompt = QString("%1@%2:%3$ ")
+    // Create prompt with exactly one space after $
+    currentPrompt = QString("%1@%2:%3$ ") // Note the single space
                   .arg(currentUser)
                   .arg(QHostInfo::localHostName())
                   .arg(currentDir);
     
     output->setPrompt(currentPrompt);
     
-    // Force display update
+    // Force immediate display update
     QTextCursor cursor = output->textCursor();
     cursor.movePosition(QTextCursor::End);
     output->setTextCursor(cursor);
