@@ -16,6 +16,7 @@ HEADERS += src/MainWindow.h
 
 # Specify Qt modules (no duplicates needed)
 QT += core gui widgets
+QT += core gui widgets network
 
 # Compiler flags
 CONFIG += c++11
