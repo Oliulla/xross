@@ -1,4 +1,3 @@
-
 TEMPLATE = app
 TARGET = xross
 
@@ -9,14 +8,30 @@ MOC_DIR = build/moc
 RCC_DIR = build/rcc
 UI_DIR = build/ui
 
-# Include the source directories
+# Input files
 SOURCES += src/main.cpp \
-           src/MainWindow.cpp  # Add MainWindow.cpp here
+           src/MainWindow.cpp
 
-HEADERS += src/MainWindow.h  # Add your header file here
+HEADERS += src/MainWindow.h
 
-# Specify Qt modules
+# Specify Qt modules (no duplicates needed)
 QT += core gui widgets
+
+# Compiler flags
+CONFIG += c++11
+CONFIG += warn_on
+CONFIG += release
 
 # Clean the build directory before building
 CLEAN_DIRS += build
+
+# Additional settings for release builds
+win32:!debug {
+    QMAKE_CXXFLAGS_RELEASE += -O2
+    QMAKE_CFLAGS_RELEASE += -O2
+}
+
+unix:!debug {
+    QMAKE_CXXFLAGS_RELEASE += -O2
+    QMAKE_CFLAGS_RELEASE += -O2
+}
