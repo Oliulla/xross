@@ -1,4 +1,4 @@
-# Xross CLI Documentation
+# Xross Terminal Documentation
 
 ## Installation
 
@@ -7,8 +7,8 @@
 Clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/yourusername/xross-cli.git
-cd xross-cli
+git clone https://github.com/Oliulla/xross.git
+cd xross
 ```
 
 ### Step 2: Install Dependencies
@@ -50,6 +50,8 @@ To use the GUI version, simply run:
 ```bash
 ./build/xross
 ```
+
+### Project Structure
 
 ```
 xross-cli/

@@ -11,14 +11,22 @@ TerminalDisplay::TerminalDisplay(QWidget *parent)
     setReadOnly(false);
     setStyleSheet("background-color: black; color: white;");
     setFont(QFont("Courier", 10));
+    setCursorWidth(0); // Hide default Qt cursor
+    
+    // Initialize with empty prompt
+    m_prompt = "";
+    m_currentInput = "";
     
     // Set up cursor blinking timer
-    m_cursorTimer.setInterval(500); // 500ms blink interval
+    m_cursorTimer.setInterval(500);
     connect(&m_cursorTimer, &QTimer::timeout, [this]() {
         m_cursorVisible = !m_cursorVisible;
         updateCursor();
     });
     m_cursorTimer.start();
+    
+    // Ensure we start with the cursor at the end
+    moveCursor(QTextCursor::End);
 }
 
 void TerminalDisplay::appendOutput(const QString &text)
@@ -31,7 +39,17 @@ void TerminalDisplay::appendOutput(const QString &text)
 
 void TerminalDisplay::setPrompt(const QString &prompt)
 {
-    m_prompt = prompt;  // Fixed the typo here (was promopt)
+    m_prompt = prompt;
+    
+    // Redraw the current line with new prompt
+    QTextCursor cursor = textCursor();
+    cursor.movePosition(QTextCursor::End);
+    cursor.select(QTextCursor::LineUnderCursor);
+    cursor.removeSelectedText();
+    cursor.insertText(m_prompt + m_currentInput);
+    cursor.movePosition(QTextCursor::End);
+    setTextCursor(cursor);
+    
     updateCursor();
 }
 
@@ -120,10 +138,22 @@ MainWindow::MainWindow(QWidget *parent) :
     layout->addWidget(output);
     setLayout(layout);
 
+    // Show initial prompt immediately
     updatePrompt();
+
+    // In MainWindow constructor, after updatePrompt():
+    output->setFocus();
+    QTimer::singleShot(100, [this]() {
+        output->updateCursor(); // Force initial cursor draw
+    });
+    
+    // Set focus to the terminal so cursor is visible
+    // output->setFocus();
 
     connect(output, &TerminalDisplay::executeCommand, this, &MainWindow::executeCommand);
 }
+
+
 
 MainWindow::~MainWindow()
 {
@@ -137,10 +167,19 @@ QString MainWindow::getCurrentUser()
 
 void MainWindow::updatePrompt()
 {
-    currentPrompt = QString("%1:~$ ").arg(currentUser);
+    currentPrompt = QString("%1@%1:~$ ").arg(currentUser);
     output->setPrompt(currentPrompt);
-    output->appendOutput(""); // Shows the prompt
+    
+    // Clear and show new prompt
+    output->clear();
+    QTextCursor cursor = output->textCursor();
+    cursor.insertText(currentPrompt);
+    cursor.movePosition(QTextCursor::End);
+    output->setTextCursor(cursor);
 }
+
+
+
 
 void MainWindow::executeCommand(const QString &command)
 {

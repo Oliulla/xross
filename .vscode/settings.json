@@ -4,7 +4,8 @@
     "qplaintextedit": "cpp",
     "qstring": "cpp",
     "qtimer": "cpp",
-    "qvboxlayout": "cpp"
+    "qvboxlayout": "cpp",
+    "qapplication": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
