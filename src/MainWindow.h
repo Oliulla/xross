@@ -13,21 +13,21 @@
 class MainWindow : public QWidget {
     Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    public:
+        explicit MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
 
-private slots:
-    void executeCommand(const QString &command);
+    private slots:
+        void executeCommand(const QString &command);
 
-private:
-    QString getCurrentUser();
-    void updatePrompt();
+    private:
+        QString getCurrentUser();
+        void updatePrompt();
 
-    TerminalDisplay *output;
-    QVBoxLayout *layout;
-    QString currentUser;
-    QString currentPrompt;
+        TerminalDisplay *output;
+        QVBoxLayout *layout;
+        QString currentUser;
+        QString currentPrompt;
 };
 
 #endif // MAINWINDOW_H
