@@ -9,6 +9,8 @@
 #include <QTimer>
 
 #include "TerminalDisplay.h"
+#include "commands/CommandManager.h"
+
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -28,6 +30,7 @@ class MainWindow : public QWidget {
         QVBoxLayout *layout;
         QString currentUser;
         QString currentPrompt;
+        CommandManager *commandManager; // ✅ Add this line
 };
 
 #endif // MAINWINDOW_H

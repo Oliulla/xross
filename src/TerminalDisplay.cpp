@@ -2,7 +2,6 @@
 
 #include <QPainter>
 #include <QTextCursor>
-#include <QTextBlock>
 #include <QFontMetrics>
 #include <QScrollBar>
 
@@ -39,7 +38,8 @@ void TerminalDisplay::appendOutput(const QString &text)
     }
 
     moveCursor(QTextCursor::End);
-    insertPlainText(text);
+    insertPlainText(text + "\n");
+
     m_currentInput.clear();
     m_cursorPos = 0;
     ensureCursorVisible();
@@ -95,6 +95,7 @@ void TerminalDisplay::keyPressEvent(QKeyEvent *event)
 
     if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
         QString command = m_currentInput;
+        appendOutput("\n"); // make new line before command
         m_currentInput.clear();
         m_cursorPos = 0;
         emit executeCommand(command);

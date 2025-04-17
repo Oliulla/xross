@@ -3,29 +3,33 @@
 
 #include <QPlainTextEdit>
 #include <QTimer>
+#include <QKeyEvent>
 
-class TerminalDisplay : public QPlainTextEdit {
+class TerminalDisplay : public QPlainTextEdit
+{
     Q_OBJECT
-    public:
-        explicit TerminalDisplay(QWidget *parent = nullptr);
-        void appendOutput(const QString &text);
-        void setPrompt(const QString &prompt);
-        void updateCursor();
 
-    signals:
-        void executeCommand(const QString &command);
+public:
+    explicit TerminalDisplay(QWidget *parent = nullptr);
 
-    protected:
-        void paintEvent(QPaintEvent *event) override;
-        void keyPressEvent(QKeyEvent *event) override;
-        void resizeEvent(QResizeEvent *event) override;
+    void appendOutput(const QString &text);
+    void setPrompt(const QString &prompt);
+    void updateCursor();
 
-    private:
-        QString m_prompt;
-        QString m_currentInput;
-        int m_cursorPos;
-        bool m_cursorVisible;
-        QTimer m_cursorTimer;
+signals:
+    void executeCommand(const QString &command);
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
+
+private:
+    QString m_prompt;
+    QString m_currentInput;
+    int m_cursorPos;
+    bool m_cursorVisible;
+    QTimer m_cursorTimer;
 };
 
 #endif // TERMINALDISPLAY_H

@@ -14,7 +14,10 @@ SOURCES += src/main.cpp \
            src/TerminalDisplay.cpp
 
 HEADERS += src/MainWindow.h \
-           src/TerminalDisplay.h
+           src/TerminalDisplay.h \
+           src/commands/ICommand.h \
+           src/commands/HelpCommand.h \
+           src/commands/CommandManager.h
 
 # Qt Modules
 QT += core gui widgets network
@@ -34,3 +37,4 @@ unix:!debug {
     QMAKE_CXXFLAGS_RELEASE += -O2
     QMAKE_CFLAGS_RELEASE += -O2
 }
+
