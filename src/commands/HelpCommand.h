@@ -1,3 +1,4 @@
+// commands/HelpCommand.h
 #ifndef HELPCOMMAND_H
 #define HELPCOMMAND_H
 

@@ -1,3 +1,4 @@
+# xross.pro
 TEMPLATE = app
 TARGET = xross
 
