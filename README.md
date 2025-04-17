@@ -57,9 +57,11 @@ To use the GUI version, simply run:
 xross-cli/
 │
 ├── src/
-│   ├── main.cpp          // Your main application entry point
-│   ├── MainWindow.h      // Header file for MainWindow
-│   └── MainWindow.cpp    // Source file for MainWindow
+│   ├── main.cpp
+│   ├── MainWindow.h
+│   ├── MainWindow.cpp
+│   ├── TerminalDisplay.h
+│   └── TerminalDisplay.cpp
 │
 ├── build/                // Build directory
 │   └── (compiled files)
