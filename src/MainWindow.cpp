@@ -1,9 +1,11 @@
+// MainWindow.cpp
 #include "MainWindow.h"
 #include "TerminalDisplay.h"
 
 #include <QDir>
 #include <QHostInfo>
 #include <QTimer>
+#include "commands/CommandManager.h" 
 
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
@@ -24,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
         output->updateCursor();
     });
 
+    commandManager = new CommandManager();
     connect(output, &TerminalDisplay::executeCommand, this, &MainWindow::executeCommand);
 }
 
@@ -51,9 +54,8 @@ void MainWindow::updatePrompt()
     output->updateCursor();
 }
 
-void MainWindow::executeCommand(const QString &command)
-{
-    QString result = QString("\nCommand '%1' executed").arg(command);
-    output->appendOutput(result + "\n");
+void MainWindow::executeCommand(const QString &command) {
+    QString outputText = commandManager->handle(command);
+    output->appendOutput(outputText);
     updatePrompt();
 }
