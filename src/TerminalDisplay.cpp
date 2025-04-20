@@ -49,24 +49,15 @@ void TerminalDisplay::appendOutput(const QString &text)
 void TerminalDisplay::setPrompt(const QString &prompt)
 {
     m_prompt = prompt;
-
-    QString currentText = toPlainText();
-    if (!currentText.isEmpty()) {
-        int lastPromptPos = currentText.lastIndexOf(m_prompt);
-        if (lastPromptPos >= 0) {
-            currentText = currentText.left(lastPromptPos);
-        }
-    }
-
-    clear();
-    insertPlainText(currentText + m_prompt);
-
-    m_cursorPos = 0;
     m_currentInput.clear();
+    m_cursorPos = 0;
 
     moveCursor(QTextCursor::End);
+    insertPlainText("\n" + m_prompt);
+
     updateCursor();
 }
+
 
 void TerminalDisplay::updateCursor()
 {
