@@ -8,7 +8,7 @@ This project was born out of the frustration developers face when switching betw
 
 🧩 The goal is to create a universal CLI/GUI terminal experience where:
 
-- `dir`, `ls`, or `Get-ChildItem` show the same result.
+- `dir`, or `ls` show the same result.
 - Developers can use familiar commands across all platforms.
 - Community contributors can easily add or map new commands from different shells.
 

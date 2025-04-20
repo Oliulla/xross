@@ -8,6 +8,7 @@
 #include "CdCommand.h"
 #include "ClearCommand.h"
 #include "ListCommand.h"
+#include "EchoCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -29,6 +30,8 @@ public:
         registerCommand(listCmd);
         // registerAlias("dir", clearCmd);
         commands["dir"] = listCmd; // Alias
+
+        registerCommand(new EchoCommand());
 
     }
 
