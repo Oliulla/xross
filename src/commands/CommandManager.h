@@ -16,7 +16,10 @@ public:
         registerCommand(new HelpCommand());
         registerCommand(new PwdCommand());
         registerCommand(new CdCommand());
-        registerCommand(new ClearCommand());
+        // registerCommand(new ClearCommand());
+        ClearCommand* clearCmd = new ClearCommand();
+        registerCommand(clearCmd);
+        registerAlias("cls", clearCmd);
     }
 
     ~CommandManager() {
@@ -41,6 +44,10 @@ private:
 
     void registerCommand(ICommand *cmd) {
         commands[cmd->name()] = cmd;
+    }
+
+    void registerAlias(const QString& alias, ICommand* cmd) {
+        commands[alias] = cmd;
     }
 };
 

@@ -128,3 +128,7 @@ void TerminalDisplay::resizeEvent(QResizeEvent *event)
     QPlainTextEdit::resizeEvent(event);
     ensureCursorVisible();
 }
+
+void TerminalDisplay::clearTerminal() {
+    this->clear();
+}
