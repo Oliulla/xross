@@ -70,3 +70,26 @@ xross-cli/
 ├── README.md             // Documentation file
 └── .gitignore            // Git ignore file
 ```
+
+```c++
+// commands/ClearCommand.h
+#ifndef CLEARCOMMAND_H
+#define CLEARCOMMAND_H
+
+#include "ICommand.h"
+
+class ClearCommand : public ICommand {
+public:
+    QString name() const override {
+        return "clear";
+    }
+
+    QString execute(const QStringList &args) override {
+        Q_UNUSED(args);
+        return QString("__CLEAR__");  // special signal to terminal
+    }
+};
+
+#endif // CLEARCOMMAND_H
+
+```

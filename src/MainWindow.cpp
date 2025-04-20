@@ -54,8 +54,15 @@ void MainWindow::updatePrompt()
     output->updateCursor();
 }
 
+
 void MainWindow::executeCommand(const QString &command) {
     QString outputText = commandManager->handle(command);
-    output->appendOutput(outputText);  // Show output first
-    updatePrompt();                    // Then add new prompt on next line
+
+    if (outputText == "__CLEAR__") {
+        output->clear();  // 💥 clear the terminal
+    } else {
+        output->appendOutput(outputText);
+    }
+
+    updatePrompt();  // Then add new prompt on next line
 }
