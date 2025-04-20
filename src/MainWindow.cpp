@@ -58,11 +58,11 @@ void MainWindow::updatePrompt()
 void MainWindow::executeCommand(const QString &command) {
     QString outputText = commandManager->handle(command);
 
-    if (outputText == "__CLEAR__") {
-        output->clear();  // 💥 clear the terminal
+    if (outputText == "__clear__") {
+        output->clearTerminal();
     } else {
         output->appendOutput(outputText);
     }
 
-    updatePrompt();  // Then add new prompt on next line
+    updatePrompt();
 }

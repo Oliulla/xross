@@ -13,7 +13,7 @@ public:
 
     QString execute(const QStringList &args) override {
         Q_UNUSED(args);
-        return QString("__CLEAR__");
+        return "__clear__"; 
     }
 };
 

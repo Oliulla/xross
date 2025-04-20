@@ -17,6 +17,9 @@ public:
     void setPrompt(const QString &prompt);
     void updateCursor();
 
+public slots:
+    void clearTerminal();
+
 signals:
     void executeCommand(const QString &command);
 
