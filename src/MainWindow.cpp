@@ -56,6 +56,6 @@ void MainWindow::updatePrompt()
 
 void MainWindow::executeCommand(const QString &command) {
     QString outputText = commandManager->handle(command);
-    output->appendOutput(outputText);
     updatePrompt();
+    output->appendOutput(outputText);
 }
