@@ -1,5 +1,19 @@
 # Xross Terminal Documentation
 
+## Purpose
+
+**Xross Terminal** is an open-source cross-platform terminal interface designed to unify the command-line experience across different operating systems and kernels. Whether you're on Windows (using PowerShell or CMD), Linux, or macOS, Xross ensures that common commands like `ls`, `dir`, `cd`, and others behave consistently.
+
+This project was born out of the frustration developers face when switching between operating systems and having to remember OS-specific commands. Xross bridges that gap by interpreting the command context and providing the appropriate response, regardless of the system you're on.
+
+🧩 The goal is to create a universal CLI/GUI terminal experience where:
+
+- `dir`, `ls`, or `Get-ChildItem` show the same result.
+- Developers can use familiar commands across all platforms.
+- Community contributors can easily add or map new commands from different shells.
+
+We welcome contributions to help expand this cross-platform compatibility and make terminal life easier for everyone.
+
 ## Installation
 
 ### Step 1: Clone the Repository
@@ -41,7 +55,7 @@ Run the CLI application from the terminal:
 ./build/xross
 ```
 
-You can input commands like `ls`, `dr`, or any other text to see the response.
+You can input commands like `help`, `pwd`, `cd`, or `clear` and get a normalized response regardless of your OS.
 
 ### GUI Usage
 
@@ -54,14 +68,12 @@ To use the GUI version, simply run:
 ### Project Structure
 
 ```
-xross-cli/
+xross/
 │
 ├── src/
 │   ├── main.cpp
-│   ├── MainWindow.h
-│   ├── MainWindow.cpp
-│   ├── TerminalDisplay.h
-│   └── TerminalDisplay.cpp
+│   └── commands
+|          └──── // Command header files
 │
 ├── build/                // Build directory
 │   └── (compiled files)
@@ -69,27 +81,4 @@ xross-cli/
 ├── xross.pro             // Qt project file
 ├── README.md             // Documentation file
 └── .gitignore            // Git ignore file
-```
-
-```c++
-// commands/ClearCommand.h
-#ifndef CLEARCOMMAND_H
-#define CLEARCOMMAND_H
-
-#include "ICommand.h"
-
-class ClearCommand : public ICommand {
-public:
-    QString name() const override {
-        return "clear";
-    }
-
-    QString execute(const QStringList &args) override {
-        Q_UNUSED(args);
-        return QString("__CLEAR__");  // special signal to terminal
-    }
-};
-
-#endif // CLEARCOMMAND_H
-
 ```
