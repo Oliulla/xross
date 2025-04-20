@@ -4,6 +4,7 @@
 
 #include "ICommand.h"
 #include "HelpCommand.h"
+#include "PwdCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -11,7 +12,7 @@ class CommandManager {
 public:
     CommandManager() {
         registerCommand(new HelpCommand());
-        // registerCommand(new PwdCommand());
+        registerCommand(new PwdCommand());
         // registerCommand(new ClearCommand());
     }
 

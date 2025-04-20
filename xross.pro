@@ -18,6 +18,7 @@ HEADERS += src/MainWindow.h \
            src/TerminalDisplay.h \
            src/commands/ICommand.h \
            src/commands/HelpCommand.h \
+           src/commands/PwdCommand.h \
            src/commands/CommandManager.h
 
 # Qt Modules
