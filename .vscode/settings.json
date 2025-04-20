@@ -5,7 +5,8 @@
     "qstring": "cpp",
     "qtimer": "cpp",
     "qvboxlayout": "cpp",
-    "qapplication": "cpp"
+    "qapplication": "cpp",
+    "new": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
