@@ -7,6 +7,7 @@
 #include "PwdCommand.h"
 #include "CdCommand.h"
 #include "ClearCommand.h"
+#include "ListCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -16,10 +17,19 @@ public:
         registerCommand(new HelpCommand());
         registerCommand(new PwdCommand());
         registerCommand(new CdCommand());
-        // registerCommand(new ClearCommand());
+        
+        // Registering the clear command and its alias
         ClearCommand* clearCmd = new ClearCommand();
         registerCommand(clearCmd);
-        registerAlias("cls", clearCmd);
+        // registerAlias("cls", clearCmd);
+        commands["cls"] = clearCmd; // Alias
+
+        // Registering the list command and its alias
+        ListCommand* listCmd = new ListCommand();
+        registerCommand(listCmd);
+        // registerAlias("dir", clearCmd);
+        commands["dir"] = listCmd; // Alias
+
     }
 
     ~CommandManager() {

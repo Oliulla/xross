@@ -21,6 +21,7 @@ HEADERS += src/MainWindow.h \
            src/commands/PwdCommand.h \
            src/commands/CdCommand.h \
            src/commands/ClearCommand.h \
+           src/commands/ListCommand.h \
            src/commands/CommandManager.h
 
 # Qt Modules

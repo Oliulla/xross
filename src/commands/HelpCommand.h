@@ -19,6 +19,7 @@ class HelpCommand : public ICommand {
             "  pwd            Print current directory\n"
             "  cd <path>      Change directory\n"
             "  clear, cls     Clear the terminal output\n"
+            "  ls, dir        List directory contents\n"
         );
     }
 };

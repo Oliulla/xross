@@ -20,6 +20,7 @@ moc_*
 *~
 *.bak
 *.swp
+*.txt
 
 # Ignore generated files (e.g., debug or release)
 debug/
