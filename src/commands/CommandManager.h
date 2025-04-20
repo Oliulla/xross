@@ -5,6 +5,7 @@
 #include "ICommand.h"
 #include "HelpCommand.h"
 #include "PwdCommand.h"
+#include "CdCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -13,6 +14,7 @@ public:
     CommandManager() {
         registerCommand(new HelpCommand());
         registerCommand(new PwdCommand());
+        registerCommand(new CdCommand());
         // registerCommand(new ClearCommand());
     }
 
