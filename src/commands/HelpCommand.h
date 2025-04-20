@@ -21,7 +21,9 @@ class HelpCommand : public ICommand {
             "  clear, cls     Clear the terminal output\n"
             "  ls, dir        List directory contents\n"
             "  echo <text>    Output text\n"
+            "  whoami         Show current user\n"
         );
+        
     }
 };
 

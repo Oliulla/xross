@@ -9,6 +9,7 @@
 #include "ClearCommand.h"
 #include "ListCommand.h"
 #include "EchoCommand.h"
+#include "WhoamiCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -32,6 +33,7 @@ public:
         commands["dir"] = listCmd; // Alias
 
         registerCommand(new EchoCommand());
+        registerCommand(new WhoamiCommand());
 
     }
 
