@@ -18,7 +18,7 @@ class HelpCommand : public ICommand {
             "  help           Show this help message\n"
             "  pwd            Print current directory\n"
             "  cd <path>      Change directory\n"
-            "  clear          Clear the terminal output\n"
+            "  clear, cls     Clear the terminal output\n"
         );
     }
 };
