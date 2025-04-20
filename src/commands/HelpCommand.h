@@ -20,6 +20,7 @@ class HelpCommand : public ICommand {
             "  cd <path>      Change directory\n"
             "  clear, cls     Clear the terminal output\n"
             "  ls, dir        List directory contents\n"
+            "  echo <text>    Output text\n"
         );
     }
 };
