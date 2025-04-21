@@ -9,42 +9,33 @@
 class CommandManager {
 public:
     CommandManager() {
-        // Core commands
         registerCommand(new HelpCommand());
         registerCommand(new PwdCommand());
         registerCommand(new CdCommand());
 
-        // Clear / CLS
         ClearCommand* clearCmd = new ClearCommand();
         registerCommand(clearCmd);
         registerAlias("cls", clearCmd);
 
-        // LS / DIR
         ListCommand* listCmd = new ListCommand();
         registerCommand(listCmd);
         registerAlias("dir", listCmd);
 
-        // Echo
         registerCommand(new EchoCommand());
 
-        // Whoami
         registerCommand(new WhoamiCommand());
 
-        // Cat / Type
         CatCommand* catCmd = new CatCommand();
         registerCommand(catCmd);
         registerAlias("type", catCmd);
 
-        // Mkdir
         registerCommand(new MkdirCommand());
 
-        // RM / DEL / RMDIR
         RmCommand* rmCmd = new RmCommand();
         registerCommand(rmCmd);
         registerAlias("del", rmCmd);
         registerAlias("rmdir", rmCmd);
 
-        // Date / Get-Date / etc.
         DateCommand* dateCmd = new DateCommand();
         registerCommand(dateCmd);
         registerAlias("get-date", dateCmd);
