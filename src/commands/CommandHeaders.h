@@ -12,3 +12,4 @@
 #include "RmCommand.h"
 #include "DateCommand.h"
 #include "ExitCommand.h"
+#include "HistoryCommand.h"
