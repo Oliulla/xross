@@ -41,6 +41,9 @@ public:
         registerAlias("get-date", dateCmd);
         registerAlias("date /t", dateCmd);
         // registerAlias("time /t", dateCmd);
+
+        registerCommand(new ExitCommand());
+
     }
 
     ~CommandManager() {

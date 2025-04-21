@@ -11,3 +11,4 @@
 #include "MkdirCommand.h"
 #include "RmCommand.h"
 #include "DateCommand.h"
+#include "ExitCommand.h"
