@@ -11,6 +11,7 @@
 #include "EchoCommand.h"
 #include "WhoamiCommand.h"
 #include "CatCommand.h"
+#include "MkdirCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -21,26 +22,22 @@ public:
         registerCommand(new PwdCommand());
         registerCommand(new CdCommand());
         
-        // Registering the clear command and its alias
         ClearCommand* clearCmd = new ClearCommand();
         registerCommand(clearCmd);
-        // registerAlias("cls", clearCmd);
-        commands["cls"] = clearCmd; // Alias
+        commands["cls"] = clearCmd; 
 
-        // Registering the list command and its alias
         ListCommand* listCmd = new ListCommand();
         registerCommand(listCmd);
-        // registerAlias("dir", clearCmd);
-        commands["dir"] = listCmd; // Alias
+        commands["dir"] = listCmd; 
 
         registerCommand(new EchoCommand());
         registerCommand(new WhoamiCommand());
 
         CatCommand* catCmd = new CatCommand();
         registerCommand(catCmd);
-        commands["type"] = catCmd; // Alias
+        commands["type"] = catCmd; 
 
-
+        registerCommand(new MkdirCommand());
     }
 
     ~CommandManager() {
