@@ -13,3 +13,4 @@
 #include "DateCommand.h"
 #include "ExitCommand.h"
 #include "HistoryCommand.h"
+#include "TreeCommand.h"

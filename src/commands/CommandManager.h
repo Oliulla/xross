@@ -44,6 +44,8 @@ public:
 
         registerCommand(new ExitCommand());
         registerCommand(new HistoryCommand(&commandHistory));
+
+        registerCommand(new TreeCommand());
     }
 
     ~CommandManager() {

@@ -29,6 +29,7 @@ class HelpCommand : public ICommand {
             "  date                        Show current date and time (aliases: Get-Date, date /T, time /T)\n"
             "  exit                        Exit the terminal\n"
             "  history                     Show previously entered commands\n"
+            "  tree                        Display directory tree structure\n"
         );
         
         
