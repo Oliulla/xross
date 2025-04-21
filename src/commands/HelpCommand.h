@@ -22,6 +22,7 @@ class HelpCommand : public ICommand {
             "  ls, dir        List directory contents\n"
             "  echo <text>    Output text\n"
             "  whoami         Show current user\n"
+            "  cat <file>, type <file>      Display file contents\n"
         );
         
     }

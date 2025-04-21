@@ -10,6 +10,7 @@
 #include "ListCommand.h"
 #include "EchoCommand.h"
 #include "WhoamiCommand.h"
+#include "CatCommand.h"
 #include <QMap>
 #include <QStringList>
 
@@ -34,6 +35,11 @@ public:
 
         registerCommand(new EchoCommand());
         registerCommand(new WhoamiCommand());
+
+        CatCommand* catCmd = new CatCommand();
+        registerCommand(catCmd);
+        commands["type"] = catCmd; // Alias
+
 
     }
 
