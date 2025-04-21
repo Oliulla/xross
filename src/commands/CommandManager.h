@@ -43,7 +43,7 @@ public:
         // registerAlias("time /t", dateCmd);
 
         registerCommand(new ExitCommand());
-
+        registerCommand(new HistoryCommand(&commandHistory));
     }
 
     ~CommandManager() {
@@ -51,14 +51,20 @@ public:
     }
 
     QString handle(const QString &input) {
-        QString trimmed = input.trimmed();
-        if (trimmed.isEmpty()) return "";
-
-        QStringList tokens = trimmed.split(" ", Qt::SkipEmptyParts);
+        QString normalizedInput = input.trimmed();
+        if (normalizedInput.isEmpty()) return "";
+    
+        commandHistory.append(normalizedInput);
+    
+        QString lowered = normalizedInput.toLower();
+        if (aliases.contains(lowered)) {
+            lowered = aliases[lowered];
+        }
+    
+        QStringList tokens = lowered.split(" ", Qt::SkipEmptyParts);
         if (tokens.isEmpty()) return "";
-
-        QString commandName = tokens.takeFirst().toLower();
-
+    
+        QString commandName = tokens.takeFirst();
         if (commands.contains(commandName)) {
             return commands[commandName]->execute(tokens);
         } else {
@@ -66,9 +72,12 @@ public:
         }
     }
     
+    
 
 private:
     QMap<QString, ICommand*> commands;
+    QMap<QString, QString> aliases;
+    QStringList commandHistory;
 
     void registerCommand(ICommand *cmd) {
         commands[cmd->name()] = cmd;

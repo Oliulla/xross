@@ -29,6 +29,7 @@ HEADERS += src/MainWindow.h \
            src/commands/RmCommand.h \
            src/commands/DateCommand.h \
            src/commands/ExitCommand.h \
+           src/commands/HistoryCommand.h \
            src/commands/CommandManager.h
 
 # Qt Modules
