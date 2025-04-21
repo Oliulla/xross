@@ -40,7 +40,7 @@ public:
         registerCommand(dateCmd);
         registerAlias("get-date", dateCmd);
         registerAlias("date /t", dateCmd);
-        registerAlias("time /t", dateCmd);
+        // registerAlias("time /t", dateCmd);
     }
 
     ~CommandManager() {
