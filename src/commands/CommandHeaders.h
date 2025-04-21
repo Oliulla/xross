@@ -1,0 +1,11 @@
+// commands/CommandHeaders.h
+#include "ICommand.h"
+#include "HelpCommand.h"
+#include "PwdCommand.h"
+#include "CdCommand.h"
+#include "ClearCommand.h"
+#include "ListCommand.h"
+#include "EchoCommand.h"
+#include "WhoamiCommand.h"
+#include "CatCommand.h"
+#include "MkdirCommand.h"

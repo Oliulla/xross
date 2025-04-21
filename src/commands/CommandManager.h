@@ -2,16 +2,7 @@
 #ifndef COMMANDMANAGER_H
 #define COMMANDMANAGER_H
 
-#include "ICommand.h"
-#include "HelpCommand.h"
-#include "PwdCommand.h"
-#include "CdCommand.h"
-#include "ClearCommand.h"
-#include "ListCommand.h"
-#include "EchoCommand.h"
-#include "WhoamiCommand.h"
-#include "CatCommand.h"
-#include "MkdirCommand.h"
+#include "CommandHeaders.h"
 #include <QMap>
 #include <QStringList>
 
