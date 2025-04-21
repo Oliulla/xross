@@ -21,10 +21,13 @@ class HelpCommand : public ICommand {
             "  clear, cls     Clear the terminal output\n"
             "  ls, dir        List directory contents\n"
             "  echo <text>    Output text\n"
-            "  whoami         Show current user\n"
-            "  cat <file>, type <file>      Display file contents\n"
-            "  mkdir <name>    Create a new directory\n"
+            "  whoami         Show current username\n"
+            "  cat <file>     Display file content\n"
+            "  mkdir <dir>    Create directory\n"
+            "  rm <file/dir>  Delete file or directory\n"
+            "  rmdir, del     Aliases for rm\n"
         );
+        
         
     }
 };

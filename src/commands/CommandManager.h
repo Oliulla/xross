@@ -29,6 +29,12 @@ public:
         commands["type"] = catCmd; 
 
         registerCommand(new MkdirCommand());
+
+        RmCommand* rmCmd = new RmCommand();
+        registerCommand(rmCmd);
+        commands["del"] = rmCmd;
+        commands["rmdir"] = rmCmd;
+
     }
 
     ~CommandManager() {
