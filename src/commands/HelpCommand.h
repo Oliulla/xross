@@ -23,6 +23,7 @@ class HelpCommand : public ICommand {
             "  echo <text>    Output text\n"
             "  whoami         Show current user\n"
             "  cat <file>, type <file>      Display file contents\n"
+            "  mkdir <name>    Create a new directory\n"
         );
         
     }
