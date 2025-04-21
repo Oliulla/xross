@@ -26,6 +26,8 @@ HEADERS += src/MainWindow.h \
            src/commands/WhoamiCommand.h \
            src/commands/CatCommand.h \
            src/commands/MkdirCommand.h \
+           src/commands/RmCommand.h \
+           src/commands/DateCommand.h \
            src/commands/CommandManager.h
 
 # Qt Modules

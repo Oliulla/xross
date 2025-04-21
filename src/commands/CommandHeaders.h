@@ -9,3 +9,5 @@
 #include "WhoamiCommand.h"
 #include "CatCommand.h"
 #include "MkdirCommand.h"
+#include "RmCommand.h"
+#include "DateCommand.h"
