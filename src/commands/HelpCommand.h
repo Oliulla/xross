@@ -27,7 +27,7 @@ class HelpCommand : public ICommand {
             "  rm <file/dir>  Delete file or directory\n"
             "  rmdir, del     Aliases for rm\n"
             "  date           Show current date and time (aliases: Get-Date, date /T, time /T)\n"
-
+            "  exit           Exit the terminal\n"
         );
         
         
