@@ -16,21 +16,6 @@ SOURCES += src/main.cpp \
 
 HEADERS += src/MainWindow.h \
            src/TerminalDisplay.h \
-           src/commands/ICommand.h \
-           src/commands/HelpCommand.h \
-           src/commands/PwdCommand.h \
-           src/commands/CdCommand.h \
-           src/commands/ClearCommand.h \
-           src/commands/ListCommand.h \
-           src/commands/EchoCommand.h \
-           src/commands/WhoamiCommand.h \
-           src/commands/CatCommand.h \
-           src/commands/MkdirCommand.h \
-           src/commands/RmCommand.h \
-           src/commands/DateCommand.h \
-           src/commands/ExitCommand.h \
-           src/commands/HistoryCommand.h \
-           src/commands/TreeCommand.h \
            src/commands/CommandManager.h
 
 # Qt Modules
