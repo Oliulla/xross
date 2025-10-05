@@ -52,27 +52,49 @@ public:
         qDeleteAll(commands);
     }
 
-    QString handle(const QString &input) {
+   QString handle(const QString &input) {
         QString normalizedInput = input.trimmed();
         if (normalizedInput.isEmpty()) return "";
-    
+
         commandHistory.append(normalizedInput);
-    
-        QString lowered = normalizedInput.toLower();
-        if (aliases.contains(lowered)) {
-            lowered = aliases[lowered];
-        }
-    
-        QStringList tokens = lowered.split(" ", Qt::SkipEmptyParts);
+
+        QStringList tokens = normalizedInput.split(" ", Qt::SkipEmptyParts);
         if (tokens.isEmpty()) return "";
-    
+
         QString commandName = tokens.takeFirst();
+
+        // Check alias (case-insensitive)
+        QString lowerCommand = commandName.toLower();
+        if (aliases.contains(lowerCommand)) {
+            commandName = aliases[lowerCommand];
+        }
+
+        // Try built-in command first
         if (commands.contains(commandName)) {
             return commands[commandName]->execute(tokens);
-        } else {
-            return QString("Unknown command: %1").arg(commandName);
         }
+
+        // Try executing as system command
+        QProcess process;
+        process.setProcessChannelMode(QProcess::MergedChannels); // Merge stdout & stderr
+        process.start(commandName, tokens);
+        
+        if (!process.waitForStarted(2000)) {
+            return QString("'%1' is not recognized as an internal or external command,\noperable program or batch file.").arg(commandName);
+        }
+
+        process.waitForFinished(-1);
+        QString output = process.readAllStandardOutput();
+        QString errorOutput = process.readAllStandardError();
+
+        if (!errorOutput.isEmpty())
+            return errorOutput;
+        else if (!output.isEmpty())
+            return output;
+        else
+            return QString("");
     }
+
     
     
 
