@@ -34,6 +34,12 @@ private:
     int m_cursorPos;
     bool m_cursorVisible;
     QTimer m_cursorTimer;
+
+
+    QString tryAutocomplete(const QString &input);
+    QStringList m_lastMatches;
+    QString m_lastInput;
+
 };
 
 #endif // TERMINALDISPLAY_H

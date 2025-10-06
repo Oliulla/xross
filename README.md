@@ -69,16 +69,37 @@ To use the GUI version, simply run:
 
 ```
 xross/
-│
-├── src/
-│   ├── main.cpp
-│   └── commands
-|          └──── // Command header files
-│
-├── build/                // Build directory
-│   └── (compiled files)
-│
-├── xross.pro             // Qt project file
-├── README.md             // Documentation file
-└── .gitignore            // Git ignore file
+├── .gitignore
+├── README.md
+├── xross.pro
+├── .vscode/
+│   ├── c_cpp_properties.json
+│   └── settings.json
+├── build/
+│   ├── moc/...
+│   └── objects/...
+└── src/
+    ├── main.cpp
+    ├── MainWindow.cpp
+    ├── MainWindow.h
+    ├── TerminalDisplay.cpp
+    ├── TerminalDisplay.h
+    └── commands/
+        ├── CatCommand.h
+        ├── CdCommand.h
+        ├── ClearCommand.h
+        ├── CommandHeaders.h
+        ├── CommandManager.h
+        ├── DateCommand.h
+        ├── EchoCommand.h
+        ├── ExitCommand.h
+        ├── HelpCommand.h
+        ├── HistoryCommand.h
+        ├── ICommand.h
+        ├── ListCommand.h
+        ├── MkdirCommand.h
+        ├── PwdCommand.h
+        ├── RmCommand.h
+        ├── TreeCommand.h
+        └── WhoamiCommand.h
 ```
